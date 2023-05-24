@@ -1,0 +1,4 @@
+"Server za kontinuiranu integraciju (ponekad poznat kao build server) u suštini upravlja zajedničkim spremištem i djeluje kao referent za kod koji dolazi.
+Kada se programeri obavežu na spremište, CI server pokreće izgradnju i dokumentuje rezultate izgradnje. 
+Obično će programer koji je izvršio promjenu koda u spremištu primiti obavijest putem e-pošte s rezultatima."
+-WhyGitLab (https://about.gitlab.com/topics/ci-cd/continuous-integration-server/)
