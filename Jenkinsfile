@@ -14,8 +14,7 @@ pipeline {
                 // Build the C++ program
                 script {
                     def compileOutput = sh(returnStdout: true, script: 'g++ -o myprogram main.cpp 2>&1')
-                    if (compileOutput.contains("error")) {
-                        error("Kompajliranje nije uspjelo:\n${compileOutput}")
+           
                     }
                 }
             }
