@@ -23,13 +23,18 @@ pipeline {
         
         stage('Testiranje') {
             steps {
-                // Check if the program has "include namespace std;"
+                // Check if the program has "include namespace std;" and "cout<<"
                 script {
                     def fileContent = sh(returnStdout: true, script: 'cat $(find . -name main.cpp)')
-                    if (fileContent.contains("using namespace std;")) {
+                    if (fileContent.contains("include namespace std;")) {
                         echo "Test uspješan"
+                        if (fileContent.contains("cout<<")) {
+                            echo "Program sadrži input"
+                        } else {
+                            echo "Program ne sadrži input"
+                        }
                     } else {
-                        error("Test nije uspješan: Nedostaje \"using namespace std;\"")
+                        error("Test nije uspješan: Nedostaje \"include namespace std;\"")
                     }
                 }
             }
