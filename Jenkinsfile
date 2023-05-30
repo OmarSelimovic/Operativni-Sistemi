@@ -1,31 +1,31 @@
 pipeline {
     agent any
-    
+
     stages {
         stage('Pribavljanje') {
             steps {
-                // Uzima sa repo-a
+                // Checkout the repository
                 checkout scm
             }
         }
-        
+
         stage('Kompajliranje') {
             steps {
-                // Kompajlira C++ program
+                // Build the C++ program
                 script {
-                    def compileOutput = sh(returnStdout: true, script: 'g++ -o myprogram $(find . -name main.cpp) 2>&1')
+                    def compileOutput = sh(returnStdout: true, script: 'g++ -o myprogram main.cpp 2>&1')
                     if (compileOutput.contains("error")) {
                         error("Kompajliranje nije uspjelo:\n${compileOutput}")
                     }
                 }
             }
         }
-        
+
         stage('Testiranje') {
             steps {
-                // Provejrava da li program ima "using namespace std;"
+                // Check if the program has "using namespace std;"
                 script {
-                    def fileContent = sh(returnStdout: true, script: 'cat $(find . -name main.cpp)')
+                    def fileContent = sh(returnStdout: true, script: 'cat main.cpp')
                     if (fileContent.contains("using namespace std;")) {
                         echo "Test uspješan"
                     } else {
