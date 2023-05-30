@@ -10,6 +10,7 @@ int main () {
         cout<<"a je veci broj"<<endl;
         else
             cout<<"b je veci broj"<<endl;
-    system ("pause");
+      cin.ignore();
+    cin.get();
     return 0;
 }
