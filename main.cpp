@@ -1,4 +1,5 @@
 #include <iostream>
+#include <unistd.h>
 
 using namespace std;
 
@@ -14,7 +15,7 @@ int main () {
             cout<<"B je veci broj."<<endl;
 
             cout<<"Hell on world :("<<endl;
-            _sleep(3000);
+            usleep(3000000);
 
             cout<<"Ma i nije tako lose"<<endl;
       cin.ignore();
