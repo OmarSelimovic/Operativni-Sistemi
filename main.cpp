@@ -12,6 +12,8 @@ int main () {
         cout<<"a je veci broj"<<endl;
         else
             cout<<"b je veci broj"<<endl;
+
+            cout<<"Hell on world :("<<endl;
       cin.ignore();
     cin.get();
     return 0;
