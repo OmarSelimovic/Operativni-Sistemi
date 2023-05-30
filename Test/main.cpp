@@ -10,7 +10,10 @@ int main() {
    cin>>b;
 
     if(a>b) cout<<"A je vece od B i njihova razlika je: "<<a-b<<endl;
-    else cout<<"B je vece od A i njihov zbor je: "<<a+b<<endl;
+    else cout<<"B je vece od A i njihov zbir je: "<<a+b<<endl;
+
+    cout<<"Hell on world!"<<endl;
+
 
     return 0;
 }
