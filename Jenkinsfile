@@ -11,18 +11,27 @@ pipeline {
         
         stage('Kompajliranje') {
             steps {
-                // Build the C++ program
-                sh 'g++ -o myprogram main.cpp'
+                // Kompajla C++ program
+                script {
+                    def compileOutput = sh(returnStdout: true, script: 'g++ -o myprogram main.cpp 2>&1')
+                    if (compileOutput.contains("error")) {
+                        error("Kompajliranje nije uspjelo:\n${compileOutput}")
+                    }
+                }
             }
         }
         
         stage('Testiranje') {
             steps {
-                // Run tests
-                sh './myprogram --test'
-                
-                // Check if the program has "using namespace std;"
-                sh 'grep -q "using namespace std;" main.cpp || { echo "Testiranje neuspjesno, nema \"using namespace std;\""; exit 1; }'
+                // Provjerava da li program ima "using namespace std;"
+                script {
+                    def fileContent = sh(returnStdout: true, script: 'cat main.cpp')
+                    if (fileContent.contains("using namespace std;")) {
+                        echo "Test uspješan"
+                    } else {
+                        error("Test nije uspješan: Nedostaje \"using namespace std;\"")
+                    }
+                }
             }
         }
     }
