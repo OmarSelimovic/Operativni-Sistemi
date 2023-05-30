@@ -9,8 +9,6 @@ int main () {
     if (a>b)
         cout<<"a je veci broj"<<endl;
         else
-            cout<<"b je veci broj"<<endl;
-    cin.ignore();
-    cin.get();
+        cout<<"b je veci broj"<<endl;
     return 0;
 }
