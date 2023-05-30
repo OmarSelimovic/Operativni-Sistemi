@@ -26,10 +26,10 @@ pipeline {
                 // Check if the program has "include namespace std;"
                 script {
                     def fileContent = sh(returnStdout: true, script: 'cat $(find . -name main.cpp)')
-                    if (fileContent.contains("include namespace std;")) {
+                    if (fileContent.contains("using namespace std;")) {
                         echo "Test uspješan"
                     } else {
-                        error("Test nije uspješan: Nedostaje \"include namespace std;\"")
+                        error("Test nije uspješan: Nedostaje \"using namespace std;\"")
                     }
                 }
             }
