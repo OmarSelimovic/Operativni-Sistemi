@@ -10,6 +10,6 @@ int main () {
         cout<<"a je veci broj"<<endl;
         else
             cout<<"b je veci broj"<<endl;
-    system ("pause");
+    _sleep(2500);
     return 0;
 }
