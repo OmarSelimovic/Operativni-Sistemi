@@ -33,13 +33,13 @@ pipeline {
                             error("Kompajliranje nije uspjelo:\n${compileOutput}")
                         }
                         
-                        // Check if the program has "include namespace std;" and "cout<<"
+                        // Check if the program has "using namespace std;" and "cout<<"
                         def fileContent = sh(
                             returnStdout: true,
                             script: "cat ${mainFile}"
                         )
                         
-                        if (fileContent.contains("include namespace std;")) {
+                        if (fileContent.contains("using namespace std;")) {
                             echo "Test uspješan"
                             
                             if (fileContent.contains("cout<<")) {
@@ -50,7 +50,7 @@ pipeline {
                             
                             echo "Uspješan main.cpp: ${mainFile}"
                         } else {
-                            error("Test nije uspješan: Nedostaje \"include namespace std;\"")
+                            error("Test nije uspješan: Nedostaje \"using namespace std;\"")
                         }
                     }
                 }
