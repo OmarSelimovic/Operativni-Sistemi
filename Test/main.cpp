@@ -13,6 +13,9 @@ int main() {
     else cout<<"B je vece od A i njihov zbir je: "<<a+b<<endl;
 
     cout<<"Hell on world!"<<endl;
+    cin.ignore();
+    cin.get();
+    cout<<"Okay maybe it's not so bad"<<endl;
 
 
     return 0;
