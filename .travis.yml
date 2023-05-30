@@ -1,0 +1,7 @@
+language: cpp
+compiler: gcc
+os: linux
+
+script:
+  - g++ -o myprogram main.cpp
+  - ./myprogram
