@@ -13,7 +13,7 @@ pipeline {
             steps {
                 // Build the C++ program
                 script {
-                    def compileOutput = sh(returnStdout: true, script: 'g++ -o myprogram main.cpp 2>&1')
+                    def compileOutput = sh(returnStdout: true, script: 'g++ -o myprogram $(find . -name main.cpp) 2>&1')
                     if (compileOutput.contains("error")) {
                         error("Kompajliranje nije uspjelo:\n${compileOutput}")
                     }
@@ -25,11 +25,11 @@ pipeline {
             steps {
                 // Check if the program has "include namespace std;"
                 script {
-                    def fileContent = sh(returnStdout: true, script: 'cat main.cpp')
-                    if (fileContent.contains("include namespace std;")) {
+                    def fileContent = sh(returnStdout: true, script: 'cat $(find . -name main.cpp)')
+                    if (fileContent.contains("using namespace std;")) {
                         echo "Test uspješan"
                     } else {
-                        error("Test nije uspješan: Nedostaje \"include namespace std;\"")
+                        error("Test nije uspješan: Nedostaje \"using namespace std;\"")
                     }
                 }
             }
