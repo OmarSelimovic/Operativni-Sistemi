@@ -14,9 +14,6 @@ int main () {
         else
             cout<<"B je veci broj."<<endl;
 
-            cout<<"Hell on world :("<<endl;
-            usleep(3000000);
-
             cout<<"Ma i nije tako lose"<<endl;
       cin.ignore();
     cin.get();
